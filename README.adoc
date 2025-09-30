@@ -1,30 +1,43 @@
-= Amexpilot
+= Amex Pilot Project
 
 image:https://img.shields.io/badge/vert.x-5.0.4-purple.svg[link="https://vertx.io"]
 
 This application was generated using http://start.vertx.io
 
+It is build using maven with Java 17
+
 == Building
 
-To launch your tests:
+To Build the artifact:
 ```
-./mvnw clean test
-```
-
-To package your application:
-```
-./mvnw clean package
+mvn clean install
 ```
 
-To run your application:
+To Build the docker image
 ```
-./mvnw clean compile exec:java
+docker build -t amexpilot .
+```
+
+To run your application in docker:
+```
+docker run -p 8888:8888 amexpilot
+```
+
+== Testing
+
+To run all unit tests:
+```
+mvn test
+```
+
+To run live while app is running:
+```
+./runtests.sh
 ```
 
 == Help
 
 * https://vertx.io/docs/[Vert.x Documentation]
-* https://stackoverflow.com/questions/tagged/vert.x?sort=newest&pageSize=15[Vert.x Stack Overflow]
 * https://groups.google.com/forum/?fromgroups#!forum/vertx[Vert.x User Group]
 * https://discord.gg/6ry7aqPWXy[Vert.x Discord]
 
