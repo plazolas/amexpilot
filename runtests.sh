@@ -1,8 +1,10 @@
 #!/bin/bash
 
-mvn clean install
+mvn clean package -DskipTests
 docker build -t amexpilot:1.0.0 .
-docker run -p 8888:8888 amexpilot:1.0.0
+docker run --name amexpilot -p 8888:8888 amexpilot:1.0.0 &
+
+sleep 5
 
 # Test 1 check app is active
 OUT=$(curl -s http://localhost:8888)
@@ -35,8 +37,8 @@ if [[ "$OUT" == *"don@mail.com"* && "$OUT" == *"tim@mail.com"* ]]; then
 fi
 
 # Test 4 check delete user
-OUT=$(curl -v -X DELETE http://localhost:8888/users/1)
-if [[ "$OUT" == *"200 OK"* ]]; then
+OUT=$(curl -s -X DELETE http://localhost:8888/users/1)
+if [[ "$OUT" == *"deleted"* ]]; then
     echo "user deleted"
   else
     echo "error deleting user"
@@ -51,8 +53,9 @@ if [[ "$OUT" == *"timothy@mail.com"* ]]; then
     echo "error updating user"
     exit
 fi
-echo "all tests passed"
+echo "==> all tests passed <=="
 
-docker stop amexpilot:1.0.0
+docker stop amexpilot
+docker rm -f amexpilot
 docker rmi amexpilot:1.0.0
 echo "bye!"

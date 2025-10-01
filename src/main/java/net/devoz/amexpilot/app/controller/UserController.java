@@ -157,7 +157,7 @@ public class UserController {
       if(id > 0) {
         this.userService.delete(id);
       }
-      rc.response().setStatusCode(200).end();
+      rc.response().setStatusCode(200).end("User deleted");
   }
 
 }
