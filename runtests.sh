@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mvn clean package -DskipTests
+mvn clean package
 docker build -t amexpilot:1.0.0 .
 docker run --name amexpilot -p 8888:8888 amexpilot:1.0.0 &
 
