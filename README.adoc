@@ -15,12 +15,12 @@ mvn clean install
 
 To Build the docker image
 ```
-docker build -t amexpilot .
+docker build -t amexpilot:1.0.0 .
 ```
 
 To run your application in docker:
 ```
-docker run -p 8888:8888 amexpilot
+docker run -p 8888:8888 amexpilot:1.0.0
 ```
 
 == Testing
@@ -30,7 +30,7 @@ To run all unit tests:
 mvn test
 ```
 
-To run live while app is running:
+To build, deploy to docker and run tests
 ```
 ./runtests.sh
 ```
@@ -40,5 +40,9 @@ To run live while app is running:
 * https://vertx.io/docs/[Vert.x Documentation]
 * https://groups.google.com/forum/?fromgroups#!forum/vertx[Vert.x User Group]
 * https://discord.gg/6ry7aqPWXy[Vert.x Discord]
+* https://www.docker.com/[Docker]
+* https://maven.apache.org/[Maven]g
+
+
 
 
