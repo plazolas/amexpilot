@@ -30,7 +30,7 @@ To run all unit tests:
 mvn test
 ```
 
-To build, deploy to docker and run tests
+To build, deploy to docker and run smoke tests
 ```
 ./runtests.sh
 ```
